@@ -1,0 +1,37 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+spring:
+  mvc:
+    message-codes-resolver-format: prefix-error-code
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+      read-unknown-enum-values-as-null: true
+---
+spring:
+  profiles: default,local
+  devtools:
+    livereload:
+      enabled: true
+  h2:
+    console:
+      enabled: true
+      path: /console
+  datasource:
+    driver-class-name: org.h2.Driver
+    platform: h2
+    url: jdbc:h2:file:C:/worspace_kata/H2/kata;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: null
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+debug: false
+logging:
+  level:
+    root: INFO
+    fr.abberrouyne.kata: DEBUG
